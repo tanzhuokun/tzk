@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/tools/zui-1.8.1-dist/dist/css/zui.css">
+<link rel="stylesheet" href="/tools/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="/tools/common/css/base2015s.css" />
+<link rel="stylesheet" href="/tools/common/css/style/webthem04.css" />
+
+<script src="/tools/jquery/jquery-1.10.2.min.js"></script>
+<script src="/tools/zui-1.8.1-dist/dist/js/zui.min.js"></script>
+<script type="text/javascript" src="/tools/layui/layui.js"></script>
+<script src="/tools/jquery/jquery.nicescroll.js"></script>
+<script src="/tools/common/common.js"></script>
+<link href="/tools/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" />
+<script src="/tools/My97DatePicker/WdatePicker.js"
+	type="text/javascript"></script>
+
+<title>项目健康监控中心</title>
+</head>
+
+<body id="cgibin">
+
+	<div class="wf">
+
+		<!-- header -->
+		<div class="h50 header-section"
+			style="background: #7FC8BA; z-index: 102; border-bottom: 1px solid #eff0f4;">
+			<div class="h50 lineh50 pdding10auto">
+				<div class="fl h50 center" style="width: 191px;">
+					<span class="bold font20 white">项目健康监控中心</span>
+				</div>
+				<div class="fl">
+					<div class="switch-menu">
+						<i class="icon icon-bars pointer white"></i>
+					</div>
+				</div>
+
+				<div
+					class="fr h50 lineh50 myaccount mgl10 relative pointer pdding10auto">
+
+					<div class="fl">
+						<#iflogin_user??> <div class="wf text-right mgtop5">您好，${login_user.account!"匿名用户"}</div></#if>
+						</div>
+
+					<div class="fl h50 pointer mgl20">
+						<img src="/tools/common/images/default_user.png"
+							style="margin-top: 7px;" width="36px" height="36px"
+							class="fl img-circle pointer radius50p" alt="我的图片">
+					</div>
+					<ul id="accountBox" class="wf hide pdding10"
+						style="width: 120px; background: #EA544A; position: fixed; right: 20px; top: 50px; background: #65cea7;">
+						<li class="wf h30 lineh30"><a href="/my/resetpwd/step01.html"
+							class="white"><i class="icon icon-user"></i>修改密码</a></li>
+						<li class="wf h30 lineh30"><a href="/public/logout"
+							class="white"><i class="icon icon-signout"></i>退出登录</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<!-- header end -->
+
+		<div class="sticky-left-side left-side">
+			<#include"/views/temp/nav.html">
+		</div>
+		<div class="main-content">
+
+			<!-- 内容区域 -->
+			<div class="wf content-box">
+				<#include"${page!}">
+			</div>
+			<!-- 内容区域 end-->
+
+
+
+		</div>
+	</div>
+
+	<!-- 确认对话框 -->
+	<div class="modal fade" id="alertModal">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">×</span><span class="sr-only">关闭</span>
+					</button>
+					<h4 class="modal-title">温馨提示</h4>
+				</div>
+				<div class="modal-body">
+					<p class="message" style="word-wrap: break-word;"></p>
+				</div>
+				<div class="modal-footer center">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn" id="confirmAction"
+						data-dismiss="modal">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 确认对话框 end -->
+
+
+</body>
+</html>

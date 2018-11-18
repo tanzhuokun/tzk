@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>项目健康监控系统</title>
+<link rel="stylesheet" href="/zui/dist/css/zui.min.css">
+<link rel="stylesheet" href="/zui/dist/css/doc.min.css">
+<link rel="stylesheet" href="/mescroll-master/dist/mescroll.css">
+<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="/css/app.css" />
+<link href="/zui/dist/css/zui.datagrid.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/zui/dist/js/zui.min.js"></script>
+<script type="text/javascript" src="/zui/dist/js/zui.datagrid.min.js"></script>
+<script type="text/javascript" src="/vue/vue.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/mescroll-master/dist/mescroll.js"></script>
+<style type="text/css">
+		
+.layui-form {
+	
+	position: absolute;
+	top:37%;
+	left:22%;
+}
+
+@media  screen and (max-width: 980px) {
+		.layui-form {
+	
+	left:10%!important;
+	top:34%;
+}
+		}
+		
+
+
+body {
+	background-color: #22292f;
+}
+</style>
+</head>
+<body style="position:relative;">
+	<!-- 标题 -->
+	<div class="ms-header">
+		<div class="c-view">
+			<a href="index"> <span class="logo white font24 lineh80">项目健康监控系统</span>
+			</a>
+			<div class="nav fr">
+				<!-- <a href="index">首页</a> -->
+				<a href="platform">首页</a> <a href="log">日志记录</a> <a href="excption">服务器状态</a>
+				<!-- <a class="active" href="#">精准数据</a> -->
+				<a href="setting"> <i class="icon icon-2x icon-spin icon-cog"></i>
+				</a> <a href="note"> <i class="icon icon-2x icon-envelope"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- 标题结束 -->
+
+	<div class="panel"
+		style="margin: 0px auto; height: 500px; width: 80%;position: absolute;top:30%;left: 10%;">
+		<div class="panel-heading">查看发送短信记录</div>
+	</div>
+
+	<table class="layui-hide" id="demo"></table>
+
+
+	<div class="footer"
+		style="height: 50px; background-color: #2c2c32;position: absolute;
+    width: 100%;bottom:-20%;">
+		<p
+			style="color: white; text-align: center; line-height: 50px; margin: 0;">云南农业大学电子信息工程系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;谭卓昆、王顺通团队制作</p>
+	</div>
+
+	<script>
+		layui.use('table', function() {
+			var table = layui.table;
+
+			//展示已知数据
+			table.render({
+				elem : '#demo',
+				cols : [ [ //标题栏
+				{
+					field : 'time',
+					title : '发送的时间',
+					width : 180,
+					sort : true,
+					align : 'center'
+				}, {
+					field : 'name',
+					title : '接收人',
+					width : 120,
+					align : 'center'
+				}, {
+					field : 'succeed',
+					title : '是否成功',
+					width : 150,
+					align : 'center'
+				}, {
+					field : 'log',
+					title : '发送的内容',
+					minWidth : 150,
+					align : 'center'
+				}] ],
+				data : [ {
+					"time" : "2018-10-30 16:53",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1001发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-28 06:52",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1002发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-27 14:51",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1003发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-26 24:50",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1001发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-23 18:54",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1001发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-24 20:53",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1002发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-25 23:55",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1003发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-26 16:56",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1003发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-27 16:50",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1002发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-28 16:54",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1001发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-29 16:53",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1001发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-30 16:55",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1002发生某某异常平台运行出线异常请及时查看"
+				}, {
+					"time" : "2018-10-31 16:56",
+					"name" : "1388888888",
+					"succeed" : "成功",
+					"log" : "平台1002发生某某异常平台运行出线异常请及时查看"
+				} ]
+				//,skin: 'line' //表格风格
+				,
+				even : true
+				,width : 800
+				,height: 400
+				,page: true //是否显示分页
+			//,limits: [5, 7, 10]
+			//,limit: 5 //每页默认显示的数量
+			});
+		});
+	</script>
+
+
+
+</body>
+</html>

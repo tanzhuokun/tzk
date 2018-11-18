@@ -1,0 +1,215 @@
+	<div class="frame_content">
+		<div class="wf frame_loction">
+			<ol class="breadcrumb">
+				   <li><a href="#"><i class="icon icon-home"></i> 用户管理</a></li>
+				   <li><a href="#">系统管理员</a></li>
+			 </ol>
+		</div>
+	</div>
+	
+	
+	<div class="frame_content mgtop10">
+
+		<div class="content">
+
+			
+			<div class="wf mgtop30">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#masterModal">新增管理员</button>
+			</div>
+			<div class="wf">
+			
+				<table id="masterList" class="wf mgtop20" lay-filter="org"></table>
+				
+			</div>
+			
+		</div>
+	</div>
+	
+	<!-- 弹出框 -->
+	<div class="modal fade" id="masterModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+	        <h4 class="modal-title">新增管理员</h4>
+	      </div>
+	      <div class="modal-body overflow">
+	      	<form id="masterForm">
+	      		<div class="wf">管理员初始密码为：123456</div>
+	      		<input name="serial" type="hidden" class="form-control" value="">
+		      	<div class="input-group">
+				  <span class="input-group-addon">登录账号</span>
+				  <input name="account" type="text" class="form-control">
+				  <span class="input-group-addon">角&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色</span>
+				  <input type="hidden" id="roleName" name="roleName" value="">
+				  <select class="form-control" name="role" id="roles">
+				  </select>
+				</div>
+				
+		        <div class="input-group mgtop20">
+				  <span class="input-group-addon">手&nbsp;&nbsp;机&nbsp;号</span>
+				  <input name="phone" type="text" class="form-control">
+				</div>
+				
+				<div class="input-group mgtop20">
+				  <span class="input-group-addon">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span>
+				  <input name="mail" type="text" class="form-control">
+				</div>
+				
+				<div class="input-group mgtop20">
+				  <span class="input-group-addon">真实姓名</span>
+				  <input name="realName" type="text" class="form-control">
+				</div>
+				
+				<div class="input-group mgtop20">
+				  <span class="input-group-addon">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</span>
+				  <select class="form-control" name="gender">
+				  	<option>男</option>
+				  	<option>女</option>
+				  </select>
+				  <span class="input-group-addon">出生日期</span>
+				  <input name="birth" type="text" class="form-control Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+				</div>
+
+			</form>
+	      </div>
+	      <div class="modal-footer">
+	    	<button type="button" id="masterBtn" class="btn btn-primary">保存</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="modal fade" id="mySmModal">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	    	<div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+		        <h4 class="modal-title">密码重置成功</h4>
+		     </div>
+		     <div class="modal-body overflow">
+				请记住当前账号的初始密码:<label class="newpwd"></label>
+			</div>
+	    </div>
+	  </div>
+	</div>
+	<!-- 弹出框 end-->
+	
+	<script type="text/html" id="bookBar">
+		<a class="label label-info " lay-event="edit">编辑</a>
+  		<a class="label label-success " lay-event="reset">重置密码</a>
+		<a class="label label-danger " lay-event="remove">删除</a>
+	</script>
+	<script type="text/html" id="businessTpl">
+		{{# var mk="无业务" }}
+		{{# if(d.businessType=='all'){ }}
+			{{mk="综合执法"}}
+		{{# } else if(d.businessType=='tw'){ }}
+			{{mk="两维办"}}
+		{{# } }}
+	</script>
+
+	<script>
+	var table;
+	
+	function installTable(table,elem,v){
+		table.render({
+		    elem: elem
+		    ,method:'post'
+		    ,url: '/cgi-bin/master/lists' //数据接口
+		    ,where:{verify:v}
+		    ,page: true //开启分页
+		    ,cols: [[ //表头
+		      {field: 'id', title: '序号', width:80, sort: true, fixed: 'left',type:'numbers'}
+		      ,{field: 'account', title: '登录账号', templet:'#typeTpl'}
+		      ,{field: 'realName', title: '真实姓名', templet:'#itemTpl'}
+		      ,{field: 'gender', title: '性别'}
+		      ,{field: 'phone', title: '手机号'}
+		      ,{field: 'mail', title: '邮箱'}
+		      ,{field: 'birth', title: '出生日期'}
+		      ,{field: 'subTime', title: '注册时间'}
+		      ,{field: 'option', title: '操作', width:200, toolbar:'#bookBar'}
+		    ]]
+		  });
+	}
+	
+	layui.use('table', function(){
+	  table = layui.table;
+	  
+	  //第一个实例
+	  installTable(table,'#masterList',0);
+	  
+	  //工具
+	  table.on('tool(org)', function(obj){
+		  var data = obj.data; //获得当前行数据
+		  var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+		  var tr = obj.tr; //获得当前行 tr 的DOM对象
+		  console.log(data)
+		  if(layEvent === 'reset'){ //重置密码
+			$.post("/cgi-bin/master/"+data.serial+"/reset/pwd",{},function(res){
+				showMsg(res);
+				if(res.code==0){
+					$(".newpwd").html(res.data);
+					$("#mySmModal").modal("show");
+				}
+			});
+		  }else if(layEvent === 'remove'){ //删除
+			$.post("/cgi-bin/master/"+data.serial+"/remove",{},function(res){
+				showMsg(res);
+				if(res.code==0){
+					 obj.del();
+				}
+			});
+		  }else if(layEvent === 'edit'){ //编辑
+			  $('#masterModal').on('show.zui.modal', function() {
+					for(var key in data){
+						var inputElem=$("#masterForm [name='"+key+"']");
+						if(inputElem.attr("type")=="radio"||inputElem.attr("type")=="checkbox"){
+							$("#masterForm [name='"+key+"'][value='"+data[key]+"']").prop("checked",true);
+						}else{
+							$("#masterForm [name='"+key+"']").val(data[key]);
+						}
+					}
+			  });
+			  $('#masterModal').modal('show'); 
+		  }
+	  });
+	});
+	
+	
+	$("#masterBtn").click(function(){
+		if($("#masterForm").valid()){
+			$.ajax({
+				url:'/cgi-bin/master/publish',
+				type:'post',
+				data:$("#masterForm").serialize(),
+				success:function(res){
+					showMsg(res);
+					if(res.code==0){
+						$("#masterModal").modal("hide");
+						table.reload('masterList', {
+							  url: '/cgi-bin/master/lists'
+						});
+					}
+				}
+			});
+		}
+	});
+	
+	$.get("/cgi-bin/roles",function(res){
+		if(res.code==0){
+			$.each(res.data,function(index,item){
+				if(index==0){
+					$("#roleName").val(item.name)
+				}
+				$("#roles").append('<option value="'+item.serial+'">'+item.name+'</option>')
+			});
+		}
+	});
+	
+	$("#roles").change(function(){
+		$("#roleName").val($("#roles option:selected").text())
+	})
+	
+	</script>

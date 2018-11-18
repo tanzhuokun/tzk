@@ -1,0 +1,241 @@
+<#include '/include/echart3.html' />
+
+<div class="frame_content">
+	<div class="wf frame_loction">
+		<ol class="breadcrumb">
+			   <li><a href="#"><i class="icon icon-home"></i> 首页</a></li>
+			   <li><a href="#">数据概览</a></li>
+		 </ol>
+	</div>
+</div>
+
+	
+<!-- 格式各样的数据 -->
+<div class="frame_content mgtop10">
+	
+	<ul>
+		<li class="fl wp33">
+			<div class="pdding20">
+				<div class="pdding20 border radius5">
+					<div class="fl w60 h60 radius50p center" style="background: #f4786e;">
+						<i class="icon icon icon-list-alt white" style="font-size:32px;line-height:60px;"></i>
+					</div>
+					<div class="fr text-right">
+						<div class="font16 lineh30">项目总数</div>
+						<div class="lineh40 font20 bold">120</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		
+		<li class="fl wp33">
+			<div class="pdding20">
+				<div class="pdding20 border radius5">
+					<div class="fl w60 h60 radius50p center" style="background: #ffc107;">
+						<i class="icon icon icon-credit white" style="font-size:32px;line-height:60px;"></i>
+					</div>
+					<div class="fr text-right">
+						<div class="font16 lineh30">项目金额</div>
+						<div class="lineh40 font20 bold">120000.00</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		
+		<li class="fl wp33">
+			<div class="pdding20">
+				<div class="pdding20 border radius5">
+					<div class="fl w60 h60 radius50p center" style="background: #7FC8BA;">
+						<i class="icon icon-file-pdf white" style="font-size:32px;line-height:60px;"></i>
+					</div>
+					<div class="fr text-right">
+						<div class="font16 lineh30">新签合同</div>
+						<div class="lineh40 font20 bold">12</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+	
+</div>
+<!-- 格式各样的数据 end -->
+
+<!-- 具体项目数 -->
+<div class="frame_content mgtop10">
+	<ul class="wp50 white">
+		<li class="fl wp33">
+			<div class="pdding20">
+				<div class="pdding20 border radius5" style="background: #1ABC9C;">
+					<div class="wf center">
+						<div class="font16 lineh30">执行完成项目</div>
+						<div class="lineh40 font20 bold">1200</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		
+		<li class="fl wp33">
+			<div class="pdding20">
+				<div class="pdding20 border radius5" style="background: #7FC8BA;">
+					<div class="wf center">
+						<div class="font16 lineh30">正在执行项目</div>
+						<div class="lineh40 font20 bold">11</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		
+		<li class="fl wp33">
+			<div class="pdding20">
+				<div class="pdding20 border radius5" style="background: #f4786e;">
+					<div class="wf center">
+						<div class="font16 lineh30">未执行项目</div>
+						<div class="lineh40 font20 bold">12</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+	
+	<!-- 待办事 -->
+	<div class="fr wp50">
+		<ul class="nav nav-tabs">
+		  <li class="active"><a data-tab href="#tabContent1">待办工作</a></li>
+		</ul>
+		<div class="tab-content">
+		  <div class="tab-pane active" id="tabContent1">
+		    <ul class="wf lineh40">
+		    	<li>
+		    		<span>1.一号线项目等待投递<label class="label label-danger mgl10">紧急</label></span>
+		    		<span class="fr">执行时间：08-20</span>
+		    	</li>
+		    	<li>
+		    		<span>2.一号线项目等待投递<label class="label label-danger mgl10">紧急</label></span>
+		    		<span class="fr">执行时间：08-20</span>
+		    	</li>
+		    </ul>
+		  </div>
+		</div>
+	</div>
+	<!-- 待办事 end-->
+	
+</div>
+<!-- 具体项目数 end -->
+
+<!-- 统计和代办事项 -->
+<div class="frame_content mgtop10 relative">
+	<!-- 数据统计 -->
+	<div style="padding-right:450px;">
+		<div class="wf font16">收入支出、利润统计
+			<ul class="fr center pointer" style="border:1px solid #d2d2d2;background: #dedede;">
+				<li class="fl w60 white" style="background: #999;border-right:1px solid #d2d2d2;">日</li>
+				<li class="fl w60" style="border-right:1px solid #d2d2d2;">月</li>
+				<li class="fl w60">年</li>
+			</ul>
+		</div>
+		<div class="wf h400 mgtop10" id="lineChart"></div>
+	</div>
+	<!-- 数据统计 -->
+	<script>
+		var option = {
+			    tooltip: {
+			        trigger: 'axis'
+			    },
+			    legend: {
+			        data:['收入','支出','利润']
+			    },
+			    grid: {
+			        left: '3%',
+			        right: '4%',
+			        bottom: '3%',
+			        containLabel: true
+			    },
+			    toolbox: {
+			        feature: {
+			            saveAsImage: {}
+			        }
+			    },
+			    xAxis: {
+			        type: 'category',
+			        boundaryGap: false,
+			        data: ['08-13','08-14','08-15','08-16','08-17','08-18','08-19']
+			    },
+			    yAxis: {
+			        type: 'value'
+			    },
+			    series: [
+			        {
+			            name:'收入',
+			            type:'line',
+			            stack: '总量',
+			            data:[120, 132, 101, 134, 90, 230, 210]
+			        },
+			        {
+			            name:'支出',
+			            type:'line',
+			            stack: '总量',
+			            data:[220, 182, 191, 234, 290, 330, 310]
+			        },
+			        {
+			            name:'利润',
+			            type:'line',
+			            stack: '总量',
+			            data:[150, 232, 201, 154, 190, 330, 410]
+			        }
+			    ]
+			};
+		
+		 // 基于准备好的dom，初始化echarts实例
+         var myChart = echarts.init(document.getElementById('lineChart'));
+         myChart.setOption(option);
+
+	</script>
+	
+	<!-- 数据统计 -->
+	<div style="width: 400px;position: absolute;top:20px;right:0;">
+		<div class="wf">
+			<div class="wf font16">实时统计</div>
+			<ul class="wf lineh30 mgtop20">
+				<li class="wf lineh40">
+					<div class="fl w100">周期</div>
+					<div class="fl w100">收入</div>
+					<div class="fl w100">支出</div>
+					<div class="fl w100">利润</div>
+				</li>
+				<li class="wf">
+					<div class="fl w100">当日</div>
+					<div class="fl w100">1200.00</div>
+					<div class="fl w100">1000.00</div>
+					<div class="fl w100">200.00</div>
+				</li>
+				<li class="wf">
+					<div class="fl w100">昨日</div>
+					<div class="fl w100">1200.00</div>
+					<div class="fl w100">1000.00</div>
+					<div class="fl w100">200.00</div>
+				</li>
+				<li class="wf">
+					<div class="fl w100">本周</div>
+					<div class="fl w100">1200.00</div>
+					<div class="fl w100">1000.00</div>
+					<div class="fl w100">200.00</div>
+				</li>
+				<li class="wf">
+					<div class="fl w100">上周</div>
+					<div class="fl w100">1200.00</div>
+					<div class="fl w100">1000.00</div>
+					<div class="fl w100">200.00</div>
+				</li>
+				<li class="wf">
+					<div class="fl w100">本月</div>
+					<div class="fl w100">1200.00</div>
+					<div class="fl w100">1000.00</div>
+					<div class="fl w100">200.00</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 数据统计 -->
+	
+</div>
+<!-- 统计和代办事项   -->

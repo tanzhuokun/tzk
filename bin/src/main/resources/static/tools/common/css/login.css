@@ -1,0 +1,455 @@
+@CHARSET "UTF-8";
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	line-height: 18px;
+	font-family: "微软雅黑", "宋体", "Helvetica Neue", "Hiragino Sans GB",
+		"Microsoft YaHei", "\9ED1\4F53", Arial, sans-serif;
+	color: #666;
+	font-size: 14px;
+	background: #fff;
+}
+
+.border {
+	border: 1px solid red;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+}
+
+input, select {
+	border: 1px solid #d2d2d2;
+	height: 20px;
+	line-height: 20px;
+	padding: 5px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin-left: 15px;
+	display: block;
+	position: relative;
+}
+
+
+/*页面顶部*/
+.logbg {
+    width: 100%;
+    height: 100%;
+    background-color: #FAF9F7;
+}
+
+.header {
+    width: 1000px;
+    margin: auto;
+    height: 120px;
+    background-color: #FAF9F7;
+}
+
+.header .logo {
+    padding: 50px 0px 18px;
+    overflow: hidden;
+    padding-top: 20px;
+}
+
+.topline {
+    border-left: 1px solid #E2E2E2;
+    margin: 0px 30px;
+}
+
+.topw{
+	font-size: 18px;
+}
+/*页面顶部*/
+
+.content-z{
+	position: relative;
+    width: 100%;
+    /*background-color: #39A6EC;*/
+    background-color: #DFEACC;
+}
+
+.content{
+padding: 80px 0px;
+width: 1000px;
+margin: auto;
+overflow: hidden;
+
+/*background-color: #39A6EC;*/
+}
+
+.login {
+   float: right;
+   width: 320px;
+   background-color: #FFF;
+   margin:40px 80px;
+}
+
+.wrap-title a {
+    font-weight: bold;
+    color: #666;
+    font-size: 16px;
+    height: 46px;
+    line-height: 46px;
+    display: block;
+    width: 115px;
+    overflow: hidden;
+    cursor: pointer;
+    padding-left: 40px;
+    border-bottom: 2px solid #f95f45;
+}
+
+.input {
+    width: 253px;
+    color: #333;
+    padding: 7px 0px 7px 10px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: normal;
+    border: 1px solid #CCC;
+    overflow: hidden;
+}
+
+.button {
+    width: 265px;
+    border: 0px none;
+    height: 36px;
+    line-height: 36px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    font-weight: bold;
+    font-family: "微软雅黑";
+    cursor: pointer;
+    background-color: #9D3A0F;
+    color: #FFF;
+    font-size: 16px;
+}
+
+.login_form_box {
+    padding: 0px 0px 0px 30px;
+    overflow: hidden;
+}
+
+.login_form_box .input {
+    width: 253px;
+    color: #333;
+    padding: 7px 0px 7px 10px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: normal;
+    border: 1px solid #CCC;
+    background: #FFF url("../../images/web/statics/com/loreg/icon_login.png") no-repeat scroll 0px 0px;
+    overflow: hidden;
+
+}
+
+.login_form_box #email {
+    background-position: 220px -60px;
+}
+
+.login_form_box #password,.login_form_box #passwordc {
+    background-position: 220px -110px;
+}
+
+.login_form_box label {
+    position: relative;
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    clear: both;
+    overflow: hidden;
+    margin: 20px 0px;
+}
+
+.login_form_box .login_tip {
+    overflow: hidden;
+    font-size: 12px;
+    font-family: "宋体";
+    line-height: 13px;
+    padding: 0px 40px 20px 0px;
+}
+
+.fr {
+    float: right;
+}
+
+.login_form_box .login_tip input {
+    float: left;
+    margin-right: 8px;
+}
+
+.login_form_box .login_tip label.fl {
+    clear: both;
+    display: inline;
+    font-size: 12px;
+    font-family: "宋体";
+    line-height: 13px;
+    font-weight: normal;
+    margin: 0px;
+    overflow: hidden;
+    position: relative;
+}
+
+/*快速登录*/
+.quick_login {
+    overflow: hidden;
+    height: 30px;
+    line-height: 30px;
+    padding: 14px 0px 14px 40px;
+    border-top: 1px solid #E8E6E3;
+}
+
+.quick_login span {
+    float: left;
+}
+
+.quick_login a {
+    float: left;
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+    background: transparent url("../../images/web/statics/com/loreg/quick_login.png") no-repeat scroll 0px 0px;
+}
+
+.quick_login .qq {
+    background-position: 0px 0px;
+}
+
+.quick_login .qq:HOVER{
+	background-position: 0px -53px;
+}
+
+.quick_login .weibo {
+    background-position: -50px 0px;
+}
+
+.quick_login .weibo:HOVER {
+    background-position: -50px -53px;
+}
+
+.quick_login .weixin {
+    background-position: -100px 0px;
+}
+
+.quick_login .weixin:HOVER {
+    background-position: -100px -53px;
+}
+
+.quick_login .douban {
+    background-position: -150px 0px;
+}
+
+/************注册页面************/
+.login_conter{
+	width: 100%;
+	margin:0px auto;
+	min-height:500px;
+	clear: both;
+	overflow: hidden;
+}
+
+.conter_center{
+    width:1000px;
+	margin:0px auto;
+}
+
+.conter_box{
+	min-height:500px;
+	margin: 30px auto;
+	padding:0px;
+	background:#fff;
+	clear:both;
+	overflow:hidden;
+	border:1px solid #e0e0e0;
+}
+
+.login_form_title{
+	height:30px;
+	margin:20px auto;
+	padding-left:10px;
+}
+
+.form_item{
+	position: relative;
+	padding: 0px 5px 18px 90px;
+	zoom: 1;
+}
+
+.lab{
+	float: left;
+	height:42px;
+	width: 100px;
+	margin-left: -110px;
+	text-align: right;
+	font-size: 14px;
+	line-height:42px;
+}
+
+.lab_required{
+	color: red;
+	font-family: SimSun;
+	font-size: 14px;
+	margin-right: 6px;
+}
+
+.lab_input{
+	font-size:13px;
+	vertical-align: middle;	
+}
+
+.lab_icon{
+	width: 195px;
+	padding: 9px 0px 9px 35px;
+}
+
+.lab_gray{
+	background: #fff url(../../images/web/statics/com/loreg/icon_reg.png) 0 0 no-repeat;
+}
+
+#nickName{
+	background-position:5px -133px;
+}
+
+#phoneNumber,#regcode{
+	background-position:5px -632px;
+}
+
+#password,#passwordc{
+	background-position:5px -418px;
+}
+
+.code{
+	width: 100px;
+	padding-left: 5px;
+	background: 0px 0px;	
+}
+
+.lab_codeicon{
+	margin-right:0px;
+	padding:10px 10px;
+}
+.code-box{
+	position: absolute;
+	border-radius: 3px;
+	border: 1px solid #c5c5c5;
+	text-align: center;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	left: 235px;
+	top: 0;
+	background-image: url(image/refresh.png);
+}
+
+.y-code{
+	font-family:Arial;
+	font-style:italic;
+	color:#2EA7E0;
+	font-size:14px;
+	letter-spacing:4.2px;
+	font-weight:bolder;             
+	float:right;            
+	cursor:pointer;
+	width:100px;
+	height:36px;
+	line-height:36px;
+	text-align:center;
+}
+
+.refresh-box{
+	position: absolute;
+	top: 8px;
+	left: 350px;
+}
+
+.service_item{
+	height: 40px;
+	float: left;
+	padding:5px 0px;
+}
+
+#agree{
+	float: left;
+	margin: 3px 10px 0px 40px;
+	display: block;
+    overflow: hidden;
+}
+
+#menu_box{
+    padding:0px;	
+}
+
+.menu_style{
+	height: 40px;
+	line-height: 40px;
+	background: #2ea7e0;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	text-align: center;
+    cursor: pointer;
+}
+
+.men_text{
+	width: 165px;
+	font-size: 18px;
+}
+
+
+/*页面底部*/
+.footer {
+    width: 100%;
+    color: #999;
+    height: 120px;
+    padding: 30px 0px;
+    clear: both;
+    float: left;
+    overflow: hidden;
+}
+.Song {
+    font-family: "宋体";
+}
+
+.m{
+    width: 1000px;
+    margin: auto;
+}
+
+.footer .code {
+    float: right;
+    padding-left: 45px;
+    text-align: center;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+.fl {
+    float: left;
+}
+
+.f14 {
+	color: #999;
+    line-height: 45px;
+    font-size: 14px;
+}
+
+.icp {
+    color: #999;
+     line-height: 45px;
+    font-size: 14px;
+}
+/*页面底部*/
+
+
+/* 忘记密码 */

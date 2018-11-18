@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>项目健康监控系统</title>
+<link rel="stylesheet" href="/zui/dist/css/zui.min.css">
+<link rel="stylesheet" href="/zui/dist/css/doc.min.css">
+<link rel="stylesheet" href="/mescroll-master/dist/mescroll.css">
+<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="/css/app.css" />
+<link href="/zui/dist/css/zui.datagrid.min.css" rel="stylesheet">
+<link href="/sweetalert-master/sweetalert.css" rel="stylesheet">
+
+<script type="text/javascript" src="/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/zui/dist/js/zui.min.js"></script>
+<script type="text/javascript" src="/zui/dist/js/zui.datagrid.min.js"></script>
+<script type="text/javascript" src="/vue/vue.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/mescroll-master/dist/mescroll.js"></script>
+<script type="text/javascript" src="/sweetalert-master/sweetalert.js"></script>
+<style type="text/css">
+.panel{
+height: 
+}
+
+body {
+	height: 100%!important;
+}
+</style>
+
+</head>
+<body style="position: relative;height:657px">
+	<!-- 标题 -->
+	<div class="ms-header">
+		<div class="c-view">
+			<a href="index"> <span class="logo white font24 lineh80">项目健康监控系统</span>
+			</a>
+			<div class="nav fr">
+				<!-- <a href="index">首页</a> -->
+				<a href="platform">首页</a> <a href="log">日志记录</a> <a href="excption">服务器状态</a>
+				<!-- <a class="active" href="#">精准数据</a> -->
+				<a href="setting"> <i class="icon icon-2x icon-spin icon-cog"></i>
+				</a> <a href="note"> <i class="icon icon-2x icon-envelope"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- 标题结束 -->
+
+	<div class="panel" style="padding-top: 80px; height: 100%;border-bottom-color:white;margin-bottom:0px;">
+		<div class="panel-heading">设置</div>
+	</div>
+
+	<div class="input-control has-icon-left"
+		style="width: 400px; position: absolute;left: 35%;top:37%;">
+		<input id="inputAccountExample1" type="text" class="form-control"
+			placeholder="管理员手机号"> <label for="inputAccountExample1"
+			class="input-control-icon-left"><i class="icon icon-user"></i></label>
+	</div>
+	<script type="text/javascript">
+		inputAccountExample1.onblur = function() {
+			$.ajax({
+				url : "/cgi-bin/checkPhone.do",
+				data : "phone=" + $("#inputAccountExample1").val(),
+				type : "get",
+				dataType : "json",
+				success : function(obj) {
+					//alert(obj.state+","+obj.message);
+					//显示服务器响应信息
+					if (obj == 0) {
+						//$(unamespan).attr("class", "msg-error");
+						swal("请确认要修改的电话号码", $("#inputAccountExample1").val(), "success");
+					} else {
+						//$(unamespan).attr("class", "msg-success");
+						swal("请确认要修改的电话号码", "电话号码不存在", "error");
+					}
+				}
+			});
+		}
+	</script>
+
+	<div class="input-control has-icon-right"
+		style="width: 400px; left: 35%;top:43%; position: absolute;">
+		<input id="inputPasswordExample1" type="password" class="form-control"
+			placeholder="修改手机号"> <label for="inputPasswordExample1"
+			class="input-control-icon-right"><i class="icon icon-key"></i></label>
+			
+			<div style="text-align: center;margin-top:30px;">
+	<button onclick="myFunction()" class="btn btn-lg btn-primary"
+		type="button" style="width:100px;height: 35px;line-height: 15px;">确定</button>
+</div>
+	<script type="text/javascript">
+		function myFunction() {
+			swal({
+				title : "确定修改吗？",
+				text : "你将修改原有的电话号码！",
+				type : "warning",
+				showCancelButton : true,
+				confirmButtonColor : "#DD6B55",
+				confirmButtonText : "确定修改！",
+				closeOnConfirm : false
+			}, inputPasswordExample1.onblur = function() {
+				$.ajax({
+					url : "/cgi-bin/setPhone.do",
+					data : "phone=" + $("#inputPasswordExample1").val() + "," + $("#inputAccountExample1").val(), 
+					type : "get",
+					dataType : "json",
+					success : function(obj) {
+						//alert(obj.state+","+obj.message);
+						//显示服务器响应信息
+						if (obj == 0) {
+							//$(unamespan).attr("class", "msg-error");
+							swal("修改！", "你的电话号码修改成功。", "success");
+						} else {
+							//$(unamespan).attr("class", "msg-success");
+							$("#inputPasswordExample1").val() == null;
+							swal("未修改！", "你的电话号码修改未成功。请填写正确的手机号码", "error");
+						}
+					}
+				});
+			});
+		};
+	</script>
+
+
+
+			
+			
+	</div>
+	<script type="text/javascript">
+		inputPasswordExample1.onblur = function() {
+
+		}
+	</script>
+
+	<div class="footer"
+		style="height: 50px; background-color: #2c2c32;position: absolute;width: 100%;bottom: 0px;">
+		<p
+			style="color: white; text-align: center; line-height: 50px; margin: 0;">云南农业大学电子信息工程系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;谭卓昆、王顺通团队制作</p>
+	</div>
+
+</body>
+</html>

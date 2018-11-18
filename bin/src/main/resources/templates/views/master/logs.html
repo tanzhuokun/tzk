@@ -1,0 +1,68 @@
+
+<div class="frame_content">
+	<div class="wf frame_loction">
+		<ol class="breadcrumb">
+			   <li><a href="#"><i class="icon icon-home"></i> 系统设置</a></li>
+			   <li><a href="#">系统日志</a></li>
+		 </ol>
+	</div>
+</div>
+
+
+<div class="frame_content mgtop10">
+	
+	<!-- 筛选条件 -->
+	<div class="wf lineh30 ">
+		<form id="searchForm" action="">
+			<div class="fl mgl10">
+				<label class="fl">日期：</label>
+				<input type="text" name="starTime" class="fl form-control w150 starTime Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+				<label class="fl">至</label>
+				<input type="text" name="endTime" class="fl form-control w150 endTime Wdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+			</div>
+			
+			<div class="fl btn btn-danger mgl10" id="searchBtn">查询</div>		
+		</form>
+		
+	</div>
+	<!-- 筛选条件 -->	
+	<!-- 列表 -->	
+	<div class="wf mgtop30">
+		<table id="logs" lay-filter="org"></table>
+	</div>
+	<!-- 列表 end -->
+	
+</div>
+
+<script>
+var table;
+layui.use('table', function(){
+  table = layui.table;
+  
+  //第一个实例
+  table.render({
+    elem: '#logs'
+    ,method:'post'
+    ,url: '/cgi-bin/logs/data/list' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'id', title: '序号', width:80, sort: true, fixed: 'left',type:'numbers'}
+      ,{field: 'logmsg', title: '日志信息'}
+      ,{field: 'username', title: '操作用户'}
+      ,{field: 'optype', title: '日志类型'}
+      ,{field: 'userip', title: '用户IP'}
+      ,{field: 'subTime', title: '登记时间'}
+    ]]
+  });
+
+});
+
+//查询
+$("#searchBtn").click(function(){
+	table.reload('deliverTask', {
+		  url: '/cgi-bin/logs/data/list'
+		  ,where:{starTime:$(".starTime").val(),endTime:$(".endTime").val()}
+	});
+});
+
+</script>

@@ -1,0 +1,28 @@
+<script type="text/javascript" charset="utf-8" src="/tools/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/tools/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="/tools/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" charset="utf-8" src="/tools/ueditor/lang/en/en.js"></script>
+	
+<script type="text/javascript">
+	//ueditor
+	  $("script.editor").each(function(){
+		  var id=$(this).attr("id");
+		  var autoHeight=$(this).attr("auto-height");
+		  var editor;
+		  
+		  if(autoHeight=="false"){
+			  editor=UE.getEditor(id,{
+				  autoHeightEnabled:false
+			  });  
+		  }else{
+			  editor=UE.getEditor(id);
+		  }
+		  
+		  var viewChange= $(this).attr("data-change");
+		  if(undefined!=viewChange)
+			  editor.addListener("contentChange",function(){
+					$("#"+viewChange).html(editor.getContent())
+			  });
+		  
+	  });
+</script>

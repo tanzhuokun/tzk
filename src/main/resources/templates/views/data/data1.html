@@ -1,0 +1,274 @@
+
+<script src="/tools/echarts-3.0/echarts.min.js"></script>
+
+<div class="frame_content">
+	<div class="wf frame_loction">
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="icon icon-home"></i> 首页</a></li>
+			<li><a href="#">数据统计</a></li>
+			<li><a href="#">车辆统计</a></li>
+		</ol>
+	</div>
+</div>
+
+
+<!-- 格式各样的数据 -->
+<div class="frame_content mgtop10">
+
+	<ul>
+		<li class="fl wp33">
+			<div class="pdding20">
+				<div class="pdding20 border radius5">
+					<div class="fl w60 h60 radius50p center"
+						style="background: #f4786e;">
+						<i class="icon icon icon-list-alt white"
+							style="font-size: 32px; line-height: 60px;"></i>
+					</div>
+					<div class="fr text-right">
+						<div class="font16 lineh30">车辆总数</div>
+						<div class="lineh40 font20 bold">120</div>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="fl wp33">
+			<div class="pdding20">
+				<div class="pdding20 border radius5">
+					<div class="fl w60 h60 radius50p center"
+						style="background: #ffc107;">
+						<i class="icon icon icon-credit white"
+							style="font-size: 32px; line-height: 60px;"></i>
+					</div>
+					<div class="fr text-right">
+						<div class="font16 lineh30">维修次数</div>
+						<div class="lineh40 font20 bold">100</div>
+					</div>
+				</div>
+			</div>
+		</li>
+
+		<li class="fl wp33">
+			<div class="pdding20">
+				<div class="pdding20 border radius5">
+					<div class="fl w60 h60 radius50p center"
+						style="background: #7FC8BA;">
+						<i class="icon icon-file-pdf white"
+							style="font-size: 32px; line-height: 60px;"></i>
+					</div>
+					<div class="fr text-right">
+						<div class="font16 lineh30">维修金额</div>
+						<div class="lineh40 font20 bold">120000.00</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+</div>
+<!-- 格式各样的数据 end -->
+
+<div class="wf">
+
+	<!-- 各类型车辆 -->
+	<div class="col-sm-3" style="padding-left: 0;">
+		<div class="frame_content mgtop10">
+			<div class="wf font16">各类型车辆分布</div>
+			<div class="wf h300" id="carType"></div>
+		</div>
+	</div>
+	<script>
+			 // 基于准备好的dom，初始化echarts实例
+	        var myChart = echarts.init(document.getElementById('carType'));
+	
+	        // 指定图表的配置项和数据
+	        var option = {
+			    tooltip : {
+			        trigger: 'item',
+			        formatter: "{a} <br/>{b} : {c} ({d}%)"
+			    },
+			    legend: {
+			        orient: 'vertical',
+			        right: 10,
+			        data: ['电动车','面包车','货运车']
+			    },
+			    series : [
+			        {
+			            name: '访问来源',
+			            type: 'pie',
+			            radius : '55%',
+			            center: ['50%', '50%'],
+			            data:[
+			                {value:335, name:'电动车'},
+			                {value:310, name:'面包车'},
+			                {value:234, name:'货运车'}
+			            ],
+			            itemStyle: {
+			                emphasis: {
+			                    shadowBlur: 10,
+			                    shadowOffsetX: 0,
+			                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+			                }
+			            }
+			        }
+			    ]
+			};
+	
+	        // 使用刚指定的配置项和数据显示图表。
+	        myChart.setOption(option);
+		</script>
+	<!-- 各类型车辆 end -->
+
+
+	<!-- 近一年内车辆维修趋势 -->
+	<div class="col-sm-9" style="padding-right: 0;">
+		<div class="frame_content mgtop10">
+			<div class="wf font16">近一年维修趋势</div>
+			<div class="wf h300" id="carRepaire"></div>
+		</div>
+	</div>
+	<script>
+			 // 基于准备好的dom，初始化echarts实例
+	        var myChart = echarts.init(document.getElementById('carRepaire'));
+	
+	        // 指定图表的配置项和数据
+	        var option = {
+			    tooltip: {
+			        trigger: 'axis',
+			        axisPointer: {
+			            type: 'cross',
+			            label: {
+			                backgroundColor: '#283b56'
+			            }
+			        }
+			    },
+			    legend: {
+			        data:['维修次数', '维修总额']
+			    },
+			    toolbox: {
+			        show: true,
+			        feature: {
+			            dataView: {readOnly: false},
+			            restore: {},
+			            saveAsImage: {}
+			        }
+			    },
+			    dataZoom: {
+			        show: false,
+			        start: 0,
+			        end: 100
+			    },
+			    xAxis: [
+			        {
+			            type: 'category',
+			            boundaryGap: true,
+			            data:['2017-09','2017-10','2017-11','2017-12','2018-01','2018-02','2018-03','2018-04','2018-05','2018-06','2018-07','2018-08']
+			        },
+			        {
+			            type: 'category',
+			            boundaryGap: true,
+			            data:['2017-09','2017-10','2017-11','2017-12','2018-01','2018-02','2018-03','2018-04','2018-05','2018-06','2018-07','2018-08']
+			        }
+			    ],
+			    yAxis: [
+			        {
+			            type: 'value',
+			            scale: true,
+			            name: '维修次数',
+			            max: 100,
+			            min: 0,
+			            boundaryGap: [0.2, 0.2]
+			        },
+			        {
+			            type: 'value',
+			            scale: true,
+			            name: '维修总额',
+			            max: 1200,
+			            min: 0,
+			            boundaryGap: [0.2, 0.2]
+			        }
+			    ],
+			    series: [
+			        {
+			            name:'维修次数',
+			            type:'bar',
+			            xAxisIndex: 1,
+			            yAxisIndex: 1,
+			            data:[10,20,30,1,3,15,35,50,55,20,36,25]
+			        },
+			        {
+			            name:'维修总额(百元)',
+			            type:'line',
+			            data:[3,6,9,1,3,15,35,2.50,5.05,2.00,3.56,2.05]
+			        }
+			    ]
+			};
+	
+	        // 使用刚指定的配置项和数据显示图表。
+	        myChart.setOption(option);
+		</script>
+	<!-- 近一年内车辆维修趋势 end -->
+
+</div>
+
+
+<div class="wf">
+	<!-- 保险到期 -->
+	<div class="col-sm-3" style="padding-left: 0;">
+		<div class="frame_content mgtop10">
+			<div class="wf font16">保险即将到期</div>
+			<div class="wf h300" id="insurance"></div>
+		</div>
+	</div>
+	<script>
+			 // 基于准备好的dom，初始化echarts实例
+	        var myChart = echarts.init(document.getElementById('insurance'));
+	
+	        // 指定图表的配置项和数据
+	        var option = {
+			    tooltip : {
+			        trigger: 'item',
+			        formatter: "{a} <br/>{b} : {c} ({d}%)"
+			    },
+			    legend: {
+			        orient: 'vertical',
+			        right: 10,
+			        data: ['未到期','即将到期','已到期']
+			    },
+			    series : [
+			        {
+			            name: '访问来源',
+			            type: 'pie',
+			            radius : '55%',
+			            center: ['50%', '50%'],
+			            data:[
+			                {value:335, name:'未到期'},
+			                {value:310, name:'即将到期'},
+			                {value:234, name:'已到期'}
+			            ],
+			            itemStyle: {
+			                emphasis: {
+			                    shadowBlur: 10,
+			                    shadowOffsetX: 0,
+			                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+			                }
+			            }
+			        }
+			    ]
+			};
+	
+	        // 使用刚指定的配置项和数据显示图表。
+	        myChart.setOption(option);
+		</script>
+	<!-- 保险到期 end-->
+
+	<!-- 当前类型车辆列表 -->
+	<div class="col-sm-9" style="padding-right: 0;">
+		<div class="frame_content mgtop10">
+			<div class="wf font16">车辆数据</div>
+			<div class="wf h300" id="carRepaire"></div>
+		</div>
+	</div>
+	<!-- 当前类型车辆列表 end -->
+
+</div>

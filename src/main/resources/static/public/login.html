@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>项目健康监控中心</title>
+	<link rel="stylesheet" href="/tools/common/css/base2015s.css" />
+	<link rel="stylesheet" href="/tools/common/css/login.css" />
+	<script src="/tools/jquery/jquery-1.10.2.min.js"></script>
+	<script src="/tools/jquery/jquery.cookie.js"></script>
+	<script src="/tools/common/common.js"></script>
+</head>
+<body id="loginPage">
+
+<style>
+.svg-warp {
+    width: 420px;
+    height: 100px;
+}
+.svg-run {
+    -webkit-animation: animSvgText 1.5s ease-in forwards;
+    animation: animSvgText 1.5s ease-in forwards;
+}
+.svg-text {
+    fill: white;
+    stroke-width: 1px;
+    stroke: #2c2c32;;
+    font-size: 40px;
+    letter-spacing: 5px;
+}
+</style>
+
+<div class="wf">
+	<div class="w1200 center-block h80">
+		<div class="fl h100 lineh100">
+			<svg class="svg-warp" xmlns="http://www.w3.org/2000/svg" version="1.1"> 
+				<text x="15%" y="65%" class="svg-text svg-run">项目健康监控中心</text> 
+			</svg>
+		</div>
+		<div class="fr h80 lineh80 center font16 pointer">
+			<div class="fl w100"><a href="">系统使用说明</a></div>
+		</div>
+	</div>
+</div>
+
+<div class="wf" style="background: #ff7701;background: #00b7ee url('https://gw.alicdn.com/tfs/TB1ittHRFXXXXcSXFXXXXXXXXXX-2880-1280.jpg') no-repeat center;">
+
+	<div class="w1200 center-block" style="height: 600px;">
+	
+	
+		<!-- 右侧登录 -->
+		<div class="fr login" style="margin-top: 110px;">
+				<div class="wrap-title"> 
+					<a id="item1">管理员登录</a> 
+				</div>
+				<!--登录-->
+				<div class="login_form_box">
+					<form name="login_form_box" method="post" action="/master/sign">
+						<div class="h40 lineh40 center" id="emsg" style="color:#ea544a;"></div>
+						<label>
+							<input class="input" name="js_account" placeholder="用户名/已验证手机号" value="admin" type="text" style="margin-left: 0px;"/>
+							<input class="input hide" name="abchide" placeholder="企业号/昵称/手机" type="text" style="margin-left: 0px;"/>
+						</label>
+						<label>
+							<input class="input hide" name="pwdhide" placeholder="密码" type="password" value="123456" style="margin-left: 0px;"/>
+							<input class="input" name="js_password" placeholder="密码" type="password" style="margin-left: 0px;"/>
+						</label>
+						<label>
+							<input class="fl input" name="js_randcode" type="text" style="margin-left: 0px;width: 120px;"/>
+							<img class="fl mgl30" alt="" src="/captcha" style="width: 100px;height: 35px;">
+						</label>
+						<label>
+							<input class="button" value="登  录" type="submit" style="margin-left: 0px;line-height: 20px;background: #e4393c;"/>
+						</label>
+						<p class="login_tip" style="line-height: 20px;">
+							<span class="fl">
+								<input value="1" name="remeber" checked="checked" id="auto_checkbox" onclick="auto_checkbox()" type="checkbox"  />自动登录
+							</span>
+							<span class="select-bn fr"><a target="_blank" href="../ac/resetpwd/index" class="mr10">忘记密码？</a><a href="/public/registermidpage.html" class="reg">免费注册</a></span>
+						</p>
+					</form>
+				</div>
+				<!--登录-->
+			    <!--快捷登录-->
+				<div class="quick_login">
+				<!--
+				span>快捷登录:</span>
+				<a href="#" class="qq"></a>
+				<a href="#" class="weibo"></a>                    
+				<a href="#" class="weixin"></a>
+				-->
+				<span>您想要的精彩生活都在这里</span>
+				</div>
+				<!--快捷登录-->   
+		</div>
+		<!-- 右侧登录 end -->
+	</div>
+</div>
+
+
+
+	<div class="footer"
+		style="height: 50px; background-color: #2c2c32; margin-top: 40px;">
+		<p
+			style="color: white; text-align: center; line-height: 50px; margin: 0;">云南农业大学电子信息工程系&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;谭卓昆、王顺通团队制作</p>
+	</div>
+
+
+<script type="text/javascript">
+		$("#emsg").html($.cookie('login_error')); 
+		$.cookie('login_error',"");
+</script>			
+
+</body>
+</html>
